@@ -1,10 +1,10 @@
 {
   "node_version": "20",
   "graphs": {
-    "agent": "./agent/agent.ts:graph"
+    "agent": "./src/agent/agent.ts:graph"
   },
   "ui": {
-    "agent": "./agent-uis/index.tsx"
+    "agent": "./src/agent-uis/index.tsx"
   },
   "env": ".env",
   "dependencies": ["."]
