@@ -10,7 +10,9 @@ If the last message is a tool result, describe what the action was, congratulate
 
 Otherwise, just answer as normal.`;
 
-export async function generalInput(state: SupervisorState): Promise<SupervisorUpdate> {
+export async function generalInput(
+  state: SupervisorState,
+): Promise<SupervisorUpdate> {
   const llm = new ChatOpenAI({ model: "gpt-4o-mini", temperature: 0 });
   const response = await llm.invoke([
     {
