@@ -26,39 +26,46 @@ Given that, please rewrite the email. Do NOT modify anything the user does not r
 const sendEmailSchema = z.object({
   subject: z.string().describe("The subject of the email"),
   body: z.string().describe("The body of the email"),
-  to: z.string().describe("The recipient of the email")
-})
+  to: z.string().describe("The recipient of the email"),
+});
 
-export async function rewriteEmail(state: EmailAgentState): Promise<EmailAgentUpdate> {
-  if (!state.humanResponse?.args || typeof state.humanResponse.args !== "string") {
-    throw new Error("Can not rewrite email if human response args is not defined, or type string.")
+export async function rewriteEmail(
+  state: EmailAgentState,
+): Promise<EmailAgentUpdate> {
+  if (
+    !state.humanResponse?.args ||
+    typeof state.humanResponse.args !== "string"
+  ) {
+    throw new Error(
+      "Can not rewrite email if human response args is not defined, or type string.",
+    );
   }
   if (!state.email) {
-    throw new Error("Can not rewrite email if email is undefined.")
+    throw new Error("Can not rewrite email if email is undefined.");
   }
 
   const model = new ChatOpenAI({
     model: "gpt-4o",
     temperature: 0,
-  }).bindTools([
+  }).bindTools(
+    [
+      {
+        name: "write_email",
+        description: "Write an email based on the conversation history",
+        schema: sendEmailSchema,
+      },
+    ],
     {
-      name: "write_email",
-      description: "Write an email based on the conversation history",
-      schema: sendEmailSchema
+      tool_choice: "write_email",
     },
-  ], {
-    tool_choice: "write_email"
-  });
+  );
 
-  const prompt = REWRITE_EMAIL_PROMPT
-    .replace("{SUBJECT}", state.email.subject)
+  const prompt = REWRITE_EMAIL_PROMPT.replace("{SUBJECT}", state.email.subject)
     .replace("{BODY}", state.email.body)
     .replace("{TO}", state.email.to)
     .replace("{USER_RESPONSE}", state.humanResponse.args);
 
-  const response = await model.invoke([
-    { role: "user", content: prompt },
-  ]);
+  const response = await model.invoke([{ role: "user", content: prompt }]);
 
   const toolCall = response.tool_calls?.[0]?.args as
     | z.infer<typeof sendEmailSchema>
@@ -69,6 +76,6 @@ export async function rewriteEmail(state: EmailAgentState): Promise<EmailAgentUp
 
   return {
     email: toolCall,
-    messages: [response]
+    messages: [response],
   };
 }

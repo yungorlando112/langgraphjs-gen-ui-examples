@@ -19,10 +19,12 @@ Required fields:
 const sendEmailSchema = z.object({
   subject: z.string().describe("The subject of the email"),
   body: z.string().describe("The body of the email"),
-  to: z.string().describe("The recipient of the email")
-})
+  to: z.string().describe("The recipient of the email"),
+});
 
-export async function writeEmail(state: EmailAgentState): Promise<EmailAgentUpdate> {
+export async function writeEmail(
+  state: EmailAgentState,
+): Promise<EmailAgentUpdate> {
   const model = new ChatOpenAI({
     model: "gpt-4o",
     temperature: 0,
@@ -30,15 +32,16 @@ export async function writeEmail(state: EmailAgentState): Promise<EmailAgentUpda
     {
       name: "write_email",
       description: "Write an email based on the conversation history",
-      schema: sendEmailSchema
-    }
+      schema: sendEmailSchema,
+    },
   ]);
 
-  const prompt = SEND_EMAIL_PROMPT.replace("{CONVERSATION}", formatMessages(state.messages));
+  const prompt = SEND_EMAIL_PROMPT.replace(
+    "{CONVERSATION}",
+    formatMessages(state.messages),
+  );
 
-  const response = await model.invoke([
-    { role: "user", content: prompt },
-  ]);
+  const response = await model.invoke([{ role: "user", content: prompt }]);
 
   const toolCall = response.tool_calls?.[0]?.args as
     | z.infer<typeof sendEmailSchema>
@@ -46,11 +49,11 @@ export async function writeEmail(state: EmailAgentState): Promise<EmailAgentUpda
   if (!toolCall) {
     return {
       messages: [response],
-    }
+    };
   }
 
   return {
     email: toolCall,
-    messages: [response]
+    messages: [response],
   };
 }

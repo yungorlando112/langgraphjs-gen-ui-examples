@@ -5,7 +5,9 @@ import { interruptNode } from "./nodes/interrupt";
 import { sendEmail } from "./nodes/send-email";
 import { rewriteEmail } from "./nodes/rewrite-email";
 
-function routeAfterInterrupt(state: EmailAgentState): typeof END | "sendEmail" | "rewriteEmail" {
+function routeAfterInterrupt(
+  state: EmailAgentState,
+): typeof END | "sendEmail" | "rewriteEmail" {
   const responseType = state.humanResponse?.type;
   if (!responseType || responseType === "ignore") {
     return END;
@@ -17,7 +19,9 @@ function routeAfterInterrupt(state: EmailAgentState): typeof END | "sendEmail" |
   return "sendEmail";
 }
 
-function routeAfterWritingEmail(state: EmailAgentState): typeof END | "interrupt" {
+function routeAfterWritingEmail(
+  state: EmailAgentState,
+): typeof END | "interrupt" {
   if (!state.email) {
     return END;
   }
@@ -31,9 +35,13 @@ const graph = new StateGraph(EmailAgentAnnotation)
   .addNode("rewriteEmail", rewriteEmail)
   .addEdge(START, "writeEmail")
   .addConditionalEdges("writeEmail", routeAfterWritingEmail, [END, "interrupt"])
-  .addConditionalEdges("interrupt", routeAfterInterrupt, ["sendEmail", "rewriteEmail", END])
+  .addConditionalEdges("interrupt", routeAfterInterrupt, [
+    "sendEmail",
+    "rewriteEmail",
+    END,
+  ])
   .addEdge("rewriteEmail", "interrupt")
   .addEdge("sendEmail", END);
 
 export const agent = graph.compile();
-agent.name = "Email Assistant Agent"
+agent.name = "Email Assistant Agent";
