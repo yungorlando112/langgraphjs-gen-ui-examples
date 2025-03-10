@@ -2,7 +2,8 @@
   "node_version": "20",
   "graphs": {
     "agent": "./src/agent/agent.ts:graph",
-    "email_agent": "./src/agent/email-agent/index.ts:agent"
+    "email_agent": "./src/agent/email-agent/index.ts:agent",
+    "chat": "./src/agent/chat-agent/index.ts:agent"
   },
   "ui": {
     "agent": "./src/agent-uis/index.tsx"
