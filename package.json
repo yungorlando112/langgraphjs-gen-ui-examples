@@ -5,11 +5,9 @@
   "type": "module",
   "scripts": {
     "agent": "langgraphjs dev --no-browser",
-    "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "format": "prettier --write .",
-    "preview": "vite preview"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@assistant-ui/react": "^0.8.0",
