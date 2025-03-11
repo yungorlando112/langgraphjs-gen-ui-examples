@@ -1,4 +1,4 @@
-# LangGraph Generative UI
+# LangGraph Generative UI Examples
 
 This repository contains a series of agents intended to be used with the [Agent Chat UI](https://agentchat.vercel.app) ([repo](https://github.com/langchain-ai/agent-chat-ui)).
 
@@ -7,9 +7,9 @@ This repository contains a series of agents intended to be used with the [Agent 
 First, clone this repository:
 
 ```bash
-git clone https://github.com/langchain-ai/langgraph-gen-ui.git
+git clone https://github.com/langchain-ai/langgraphjs-gen-ui-examples.git
 
-cd langgraph-gen-ui
+cd langgraphjs-gen-ui-examples
 ```
 
 Then, install dependencies:

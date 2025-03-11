@@ -1,5 +1,10 @@
 {
-  "name": "agent-ui-client",
+  "name": "langgraphjs-gen-ui-examples",
+  "homepage": "https://github.com/langchain-ai/langgraphjs-gen-ui-examples/blob/main/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/langchain-ai/langgraphjs-gen-ui-examples.git"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",
