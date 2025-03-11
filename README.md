@@ -25,14 +25,21 @@ Next, copy the `.env.example` file, and set the necessary environment variables:
 cp .env.example .env
 ```
 
-Only [OpenAI](https://platform.openai.com/), [Google GenAI](https://aistudio.google.com/), and [Financial Datasets](https://www.financialdatasets.ai/) keys are required (Anthropic is used in the pizza order agent, thus not required if you do not trigger it).
+Only [OpenAI](https://platform.openai.com/), and [Google GenAI](https://aistudio.google.com/), API keys are required ([Financial Datasets](https://www.financialdatasets.ai/) is only required if you want to call the stockbroker graph, and [Anthropic](https://console.anthropic.com) is only used in the pizza ordering agent).
 
 ```bash
+# Required
 OPENAI_API_KEY=""
 GOOGLE_API_KEY=""
-ANTHROPIC_API_KEY=""
 
-FINANCIAL_DATASETS_API_KEY=""
+# Optional, but recommended for best in class tracing and observability.
+# LANGSMITH_PROJECT="default"
+# LANGSMITH_API_KEY=""
+# LANGSMITH_TRACING_V2=true
+
+# Optional
+# ANTHROPIC_API_KEY=""
+# FINANCIAL_DATASETS_API_KEY=""
 ```
 
 Start the LangGraph server:
