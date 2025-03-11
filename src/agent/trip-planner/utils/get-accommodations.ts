@@ -18,7 +18,6 @@ export function getAccommodationsListProps(tripDetails: TripDetails) {
     "https://a0.muscache.com/im/pictures/prohost-api/Hosting-18327626/original/fba2e4e8-9d68-47a8-838e-dab5353e5209.jpeg?im_w=720&im_format=avif",
     "https://a0.muscache.com/im/pictures/miso/Hosting-813949239894880001/original/b2abe806-b60f-4c0b-b4e6-46808024e5b6.jpeg?im_w=720&im_format=avif",
     "https://a0.muscache.com/im/pictures/prohost-api/Hosting-894877242638354447/original/29e50d48-1733-4c5b-9068-da4443dd7757.jpeg?im_w=720&im_format=avif",
-    ,
     "https://a0.muscache.com/im/pictures/hosting/Hosting-1079897686805296552/original/b24bd803-52f2-4ca7-9389-f73c9d9b3c64.jpeg?im_w=720&im_format=avif",
     "https://a0.muscache.com/im/pictures/miso/Hosting-43730011/original/29f90186-4f83-408a-89ce-a82e520b4e36.png?im_w=720&im_format=avif",
     "https://a0.muscache.com/im/pictures/300ae0e1-fc7e-4a05-93a4-26809311ef19.jpg?im_w=720&im_format=avif",
