@@ -84,21 +84,29 @@ export default function BuyStock(props: {
       },
     };
 
-    thread.submit({
-      messages: [
-        {
-          type: "tool",
-          tool_call_id: toolCallId,
-          id: `${DO_NOT_RENDER_ID_PREFIX}${uuidv4()}`,
-          name: "buy-stock",
-          content: JSON.stringify(orderDetails),
+    thread.submit(
+      {},
+      {
+        command: {
+          update: {
+            messages: [
+              {
+                type: "tool",
+                tool_call_id: toolCallId,
+                id: `${DO_NOT_RENDER_ID_PREFIX}${uuidv4()}`,
+                name: "buy-stock",
+                content: JSON.stringify(orderDetails),
+              },
+              {
+                type: "human",
+                content: `Purchased ${quantity} shares of ${snapshot.ticker} at ${snapshot.price} per share`,
+              },
+            ],
+          },
+          goto: "generalInput",
         },
-        {
-          type: "human",
-          content: `Purchased ${quantity} shares of ${snapshot.ticker} at ${snapshot.price} per share`,
-        },
-      ],
-    });
+      },
+    );
 
     setFinalPurchase(orderDetails.purchaseDetails);
   }
