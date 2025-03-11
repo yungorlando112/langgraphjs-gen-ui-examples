@@ -109,7 +109,7 @@ export async function executor(
   ui.push(
     {
       name: "proposed-change",
-      content: {
+      props: {
         toolCallId,
         change: updateFileContents,
         planItem: nextPlanItem,

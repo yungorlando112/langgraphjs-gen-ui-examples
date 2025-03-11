@@ -179,13 +179,13 @@ export async function callTools(
     ui.push(
       {
         name: "stock-price",
-        content: { ticker: stockbrokerToolCall.args.ticker, ...prices },
+        props: { ticker: stockbrokerToolCall.args.ticker, ...prices },
       },
       { message },
     );
   }
   if (portfolioToolCall) {
-    ui.push({ name: "portfolio", content: {} }, { message });
+    ui.push({ name: "portfolio", props: {} }, { message });
   }
   if (buyStockToolCall) {
     const snapshot = await getPriceSnapshotForTicker(
@@ -194,7 +194,7 @@ export async function callTools(
     ui.push(
       {
         name: "buy-stock",
-        content: {
+        props: {
           toolCallId: buyStockToolCall.id ?? "",
           snapshot,
           quantity: buyStockToolCall.args.quantity,
