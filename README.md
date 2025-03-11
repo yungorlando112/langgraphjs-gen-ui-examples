@@ -2,7 +2,7 @@
 
 This repository contains a series of agents intended to be used with the [Agent Chat UI](https://agentchat.vercel.app) ([repo](https://github.com/langchain-ai/agent-chat-ui)).
 
-## Setup
+# Setup
 
 First, clone this repository:
 
@@ -38,7 +38,7 @@ You should see output similar to:
 - 🎨 Studio UI: https://smith.langchain.com/studio?baseUrl=http://localhost:2024
 ```
 
-## Example usage
+# Example usage
 
 The following are some prompts, and corresponding graph IDs you can use to test the agents:
 
@@ -56,7 +56,7 @@ The following are some prompts, and corresponding graph IDs you can use to test 
 - Graph ID: `email_agent`:
   - `Write me an email to <insert email here> about <insert email description here>` - Will generate an email for you, addressed to the email address you specified. Used to demonstrate how you can trigger the built in Human in the Loop (HITL) UI in the Agent Chat UI. This agent will throw an `interrupt`, with the standard [`HumanInterrupt`](https://github.com/langchain-ai/langgraph/blob/84c956bc8c3b2643819677bea962425e02e15ba4/libs/prebuilt/langgraph/prebuilt/interrupt.py#L42) schema, which the Agent Chat UI is able to automatically detect, and render a HITL UI component to manage the interrupt.
 
-## Agents
+# Agents
 
 Key
 
@@ -68,7 +68,7 @@ Key
 - [Chat Agent](#chat-agent)
 - [Email Agent](#email-agent)
 
-### Supervisor
+## Supervisor
 
 This is the default agent, which has access to a series of subgraphs it can call, depending on the context of the conversation. This includes the following agents:
 
@@ -121,11 +121,11 @@ The order pizza agent is used to demonstrate how tool calls/results are rendered
 
 It will then call two tools, once to extract the fields from your input for the pizza order (order details, and location). After that, it calls the tool to "order" the pizza. Each of these tool calls will have corresponding tool call/result UI components rendered in the Agent Chat UI. These are the default UI components rendered when your graph calls a tool/returns a tool result.
 
-### Chat Agent
+## Chat Agent
 
 The chat agent is a single LLM call, used to demonstrate the plain back and forth of a chat agent. It should be accessed via the `chat` graph ID. It does not have access to any tools, or generative UI components.
 
-### Email Agent
+## Email Agent
 
 The email agent is a dummy implementation of how you'd implement an email assistant with the Agent Chat UI. It is accessed via the `email_agent` graph ID. You can trigger it via the following query:
 
