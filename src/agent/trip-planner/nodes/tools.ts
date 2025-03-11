@@ -65,7 +65,7 @@ export async function callTools(
     ui.push(
       {
         name: "accommodations-list",
-        content: {
+        props: {
           toolCallId: listAccommodationsToolCall.id ?? "",
           ...getAccommodationsListProps(state.tripDetails),
         },
@@ -78,7 +78,7 @@ export async function callTools(
     ui.push(
       {
         name: "restaurants-list",
-        content: { tripDetails: state.tripDetails },
+        props: { tripDetails: state.tripDetails },
       },
       { message: response },
     );

@@ -89,7 +89,7 @@ export async function planner(
   ui.push(
     {
       name: "code-plan",
-      content: {
+      props: {
         toolCallId,
         executedPlans,
         rejectedPlans,
