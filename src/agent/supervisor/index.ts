@@ -9,7 +9,7 @@ import { router } from "./nodes/router";
 
 export const ALL_TOOL_DESCRIPTIONS = `- stockbroker: can fetch the price of a ticker, purchase/sell a ticker, or get the user's portfolio
 - tripPlanner: helps the user plan their trip. it can suggest restaurants, and places to stay in any given location.
-- openCode: can write code for the user. call this tool when the user asks you to write code
+- openCode: can write a React TODO app for the user. Only call this tool if they request a TODO app.
 - orderPizza: can order a pizza for the user`;
 
 function handleRoute(
