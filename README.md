@@ -19,6 +19,22 @@ Then, install dependencies:
 pnpm install
 ```
 
+Next, copy the `.env.example` file, and set the necessary environment variables:
+
+```bash
+cp .env.example .env
+```
+
+Only [OpenAI](https://platform.openai.com/), [Google GenAI](https://aistudio.google.com/), and [Financial Datasets](https://www.financialdatasets.ai/) keys are required (Anthropic is used in the pizza order agent, thus not required if you do not trigger it).
+
+```bash
+OPENAI_API_KEY=""
+GOOGLE_API_KEY=""
+ANTHROPIC_API_KEY=""
+
+FINANCIAL_DATASETS_API_KEY=""
+```
+
 Start the LangGraph server:
 
 ```bash

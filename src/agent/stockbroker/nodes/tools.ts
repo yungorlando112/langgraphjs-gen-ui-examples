@@ -20,7 +20,11 @@ async function getNextPageData(url: string) {
 
   const response = await fetch(url, options);
   if (!response.ok) {
-    throw new Error("Failed to fetch prices");
+    const status = response.status;
+    const statusText = response.statusText;
+    throw new Error(
+      `Failed to next page data prices.\nURL: ${url}\nStatus: ${status} ${statusText}`,
+    );
   }
   return await response.json();
 }
@@ -81,10 +85,15 @@ async function getPricesForTicker(ticker: string): Promise<{
     if (iters > 10) {
       throw new Error("MAX ITERS REACHED");
     }
-    const nextPageData = await getNextPageData(nextPageUrlThirtyDays);
-    pricesThirtyDays.push(...nextPageData.prices);
-    nextPageUrlThirtyDays = nextPageData.next_page_url;
-    iters += 1;
+    try {
+      const nextPageData = await getNextPageData(nextPageUrlThirtyDays);
+      pricesThirtyDays.push(...nextPageData.prices);
+      nextPageUrlThirtyDays = nextPageData.next_page_url;
+      iters += 1;
+    } catch (e) {
+      console.error(e);
+      break;
+    }
   }
 
   return {
