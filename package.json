@@ -19,6 +19,7 @@
     "@langchain/google-genai": "^0.1.10",
     "@langchain/langgraph": "^0.2.54",
     "@langchain/langgraph-api": "^0.0.15",
+    "@langchain/langgraph-checkpoint": "^0.0.16",
     "@langchain/langgraph-cli": "^0.0.15",
     "@langchain/langgraph-sdk": "^0.0.53",
     "@langchain/openai": "^0.4.4",
