@@ -269,21 +269,29 @@ export default function AccommodationsList({
       tripDetails,
     };
 
-    thread.submit({
-      messages: [
-        {
-          type: "tool",
-          tool_call_id: toolCallId,
-          id: `${DO_NOT_RENDER_ID_PREFIX}${uuidv4()}`,
-          name: "book-accommodation",
-          content: JSON.stringify(orderDetails),
+    thread.submit(
+      {},
+      {
+        command: {
+          update: {
+            messages: [
+              {
+                type: "tool",
+                tool_call_id: toolCallId,
+                id: `${DO_NOT_RENDER_ID_PREFIX}${uuidv4()}`,
+                name: "book-accommodation",
+                content: JSON.stringify(orderDetails),
+              },
+              {
+                type: "human",
+                content: `Booked ${accommodation.name} for ${tripDetails.numberOfGuests}.`,
+              },
+            ],
+          },
+          goto: "generalInput",
         },
-        {
-          type: "human",
-          content: `Booked ${accommodation.name} for ${tripDetails.numberOfGuests}.`,
-        },
-      ],
-    });
+      },
+    );
 
     setAccommodationBooked(true);
     if (selectedAccommodation?.id !== accommodation.id) {
