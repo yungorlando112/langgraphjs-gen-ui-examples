@@ -2,7 +2,12 @@
 
 This repository contains a series of agents intended to be used with the [Agent Chat UI](https://agentchat.vercel.app) ([repo](https://github.com/langchain-ai/agent-chat-ui)).
 
+![Generative UI Example](./static/gen_ui.gif)
+
 # Setup
+
+> [!TIP]
+> 🎥 Want to watch a video walkthrough instead? Click [here](https://youtu.be/sCqN01R8nIQ).
 
 First, clone this repository:
 
