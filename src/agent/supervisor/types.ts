@@ -16,41 +16,44 @@ export const SupervisorZodConfiguration = z.object({
    * Should be in the format `provider/model_name`.
    * Defaults to `anthropic/claude-3-7-sonnet-latest`.
    */
-  model: z.string().optional().langgraph.metadata({
-    type: "select",
-    default: "anthropic/claude-3-7-sonnet-latest",
-    description: "The model to use in all generations",
-    options: [
-      {
-        label: "Claude 3.7 Sonnet",
-        value: "anthropic/claude-3-7-sonnet-latest",
-      },
-      {
-        label: "Claude 3.5 Sonnet",
-        value: "anthropic/claude-3-5-sonnet-latest",
-      },
-      {
-        label: "GPT 4o",
-        value: "openai/gpt-4o",
-      },
-      {
-        label: "GPT 4.1",
-        value: "openai/gpt-4.1",
-      },
-      {
-        label: "o3",
-        value: "openai/o3",
-      },
-      {
-        label: "o3 mini",
-        value: "openai/o3-mini",
-      },
-      {
-        label: "o4",
-        value: "openai/o4",
-      },
-    ]
-  }),
+  model: z
+    .string()
+    .optional()
+    .langgraph.metadata({
+      type: "select",
+      default: "anthropic/claude-3-7-sonnet-latest",
+      description: "The model to use in all generations",
+      options: [
+        {
+          label: "Claude 3.7 Sonnet",
+          value: "anthropic/claude-3-7-sonnet-latest",
+        },
+        {
+          label: "Claude 3.5 Sonnet",
+          value: "anthropic/claude-3-5-sonnet-latest",
+        },
+        {
+          label: "GPT 4o",
+          value: "openai/gpt-4o",
+        },
+        {
+          label: "GPT 4.1",
+          value: "openai/gpt-4.1",
+        },
+        {
+          label: "o3",
+          value: "openai/o3",
+        },
+        {
+          label: "o3 mini",
+          value: "openai/o3-mini",
+        },
+        {
+          label: "o4",
+          value: "openai/o4",
+        },
+      ],
+    }),
   /**
    * The temperature to use for the reflection generation.
    * Defaults to `0.7`.

@@ -3,7 +3,11 @@ import { stockbrokerGraph } from "../stockbroker";
 import { tripPlannerGraph } from "../trip-planner";
 import { graph as openCodeGraph } from "../open-code";
 import { graph as orderPizzaGraph } from "../pizza-orderer";
-import { SupervisorAnnotation, SupervisorState, SupervisorZodConfiguration } from "./types";
+import {
+  SupervisorAnnotation,
+  SupervisorState,
+  SupervisorZodConfiguration,
+} from "./types";
 import { generalInput } from "./nodes/general-input";
 import { router } from "./nodes/router";
 
