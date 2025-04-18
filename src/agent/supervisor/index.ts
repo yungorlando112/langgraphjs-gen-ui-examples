@@ -3,7 +3,7 @@ import { stockbrokerGraph } from "../stockbroker";
 import { tripPlannerGraph } from "../trip-planner";
 import { graph as openCodeGraph } from "../open-code";
 import { graph as orderPizzaGraph } from "../pizza-orderer";
-import { SupervisorAnnotation, SupervisorState } from "./types";
+import { SupervisorAnnotation, SupervisorState, SupervisorZodConfiguration } from "./types";
 import { generalInput } from "./nodes/general-input";
 import { router } from "./nodes/router";
 
@@ -18,7 +18,7 @@ function handleRoute(
   return state.next;
 }
 
-const builder = new StateGraph(SupervisorAnnotation)
+const builder = new StateGraph(SupervisorAnnotation, SupervisorZodConfiguration)
   .addNode("router", router)
   .addNode("stockbroker", stockbrokerGraph)
   .addNode("tripPlanner", tripPlannerGraph)
