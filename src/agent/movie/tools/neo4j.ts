@@ -139,7 +139,7 @@ export class MovieRecommendationService {
       process.env.NEO4J_URI as string,
       process.env.NEO4J_USERNAME as string,
       process.env.NEO4J_PASSWORD as string,
-    );go
+    )
   }
 
   /**
