@@ -14,7 +14,7 @@ First, clone this repository:
 ```bash
 git clone https://github.com/langchain-ai/langgraphjs-gen-ui-examples.git
 
-cd langgraphjs-gen-ui-examples
+cd movie-agent
 ```
 
 Then, install dependencies:
